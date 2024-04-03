@@ -71,8 +71,34 @@ async function recreateDB() {
     is_poisonous: true
   });
 
+  let fig2 = new Fig({
+    name: "Mission Fig",
+    size: "large",
+    age: 4,
+    is_poisonous: false
+  });
+
+  let fig3 = new Fig({
+    name: "Black Mission",
+    size: "small",
+    age: 3,
+    is_poisonous: true
+  });
+
   fig1.save().then(doc => {
     console.log("First Object saved")}
+  ).catch(err => {
+    console.error(err)
+  });
+
+  fig2.save().then(doc => {
+    console.log("Second Object saved")}
+  ).catch(err => {
+    console.error(err)
+  });
+
+  fig3.save().then(doc => {
+    console.log("Third Object saved")}
   ).catch(err => {
     console.error(err)
   });

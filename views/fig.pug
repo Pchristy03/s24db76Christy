@@ -2,14 +2,16 @@ extends layout
 
 block content
   h1= title
-  - let results = [{'name': 'Brown Turkey', 'size': 'medium', 'age': '5', 'is_poisonous': true}, {'name': 'Black Mission', 'size': 'small', 'age': '2', 'is_poisonous': true},{'name': 'Celeste', 'size': 'large', 'age': '7', 'is_poisonous': false}]
+  //- [{'name': 'Brown Turkey', 'size': 'medium', 'age': '5', 'is_poisonous': true}, {'name': 'Black Mission', 'size': 'small', 'age': '2', 'is_poisonous': true},{'name': 'Celeste', 'size': 'large', 'age': '7', 'is_poisonous': false}]
+
+  - let items = results
 
   div(class="container-fluid")
     div(class="row")
-      - for(var i=0; i<results.length; i++)
+      - for(var i=0; i<items.length; i++)
         div(class="col-sm-2")
-          p Name: #{results[i]['name']} 
-          p Size: #{results[i]['size']}
-          p Age: #{results[i]['age']}
-          p Poisonous?: #{results[i]['is_poisonous']}
+          p Name: #{items[i]['name']} 
+          p Size: #{items[i]['size']}
+          p Age: #{items[i]['age']}
+          p Poisonous: #{items[i]['is_poisonous']}
       
