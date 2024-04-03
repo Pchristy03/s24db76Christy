@@ -1,8 +1,14 @@
 var Fig = require("../models/fig");
 
 // List all costumes
-exports.fig_list = function(req, res) {
-    res.send('NOT IMPLEMENTED: fig list');
+exports.fig_list = async function(req, res) {
+    try {
+        theFigs = await Fig.find()
+        res.send(theFigs);
+    } catch(err){
+        res.status(500);
+        res.send(`{"error": ${err}}`);
+    }
 };
 
 // for a specific Costume. 
