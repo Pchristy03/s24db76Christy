@@ -60,6 +60,23 @@ exports.fig_delete = function(req, res) {
 };
 
     // Handle Costume update form on PUT. 
-exports.fig_update_put = function(req, res) {
-    res.send('NOT IMPLEMENTED: fig update PUT' + req.params.id); 
+exports.fig_update_put = async function(req, res) {
+    console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`)
+
+    try {
+    let toUpdate = await Fig.findById(req.params.id);
+
+    // update the properties
+    if (req.body.name) toUpdate.name = req.body.name;
+    if (req.body.size) toUpdate.size = req.body.size;
+    if (req.body.age) toUpdate.age = req.body.age;
+    if (req.body.is_poisonous) toUpdate.is_poisonous = req.body.is_poisonous;
+
+    let result = await toUpdate.save();
+    res.send(result)
+    console.log("Success: " + result);
+    } catch(error) {
+        res.status(500)
+        res.send(`{"error": ${error}: Update for id ${req.params.id} failed }`)
+    }
 };
