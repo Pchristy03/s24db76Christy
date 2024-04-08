@@ -1,0 +1,26 @@
+extends layout
+
+block content
+    h1= title
+
+    - let figId = toShow._id
+    - let figName = toShow.name
+    - let figSize = toShow.size
+    - let figAge = toShow.age
+    - let isPoisonous = toShow.is_poisonous
+    div
+        div.row
+            div(class="figAttribute") Fig ID is:
+            div #{figId}
+        div.row
+            div(class="figAttribute") Fig name is:
+            div #{figName}
+        div.row
+            div(class="figAttribute") Fig size is:
+            div #{figSize}
+        div.row
+            div(class="figAttribute") Fig age is:
+            div #{figAge}
+        div.row
+            div(class="figAttribute") Is this fig poisonous?:
+            div #{isPoisonous}

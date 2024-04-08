@@ -23,6 +23,16 @@ exports.figs_view_all_page = async function(req, res) {
     }
 }
 
+exports.fig_view_one_page = async function(req, res) {
+    try {
+        selectedFig = await Fig.findById(req.query.id)
+        res.render('figdetail', {title: 'Fig Detail', toShow: selectedFig });
+    } catch(err) {
+        res.status(500)
+        res.send(`{ "error": "${err}"}`)
+    }
+};
+
 // for a specific Costume. 
 exports.fig_detail = async function(req, res) {
     console.log("detail " + req.params.id)
@@ -55,8 +65,16 @@ exports.fig_create_post = async function(req, res) {
 };
 
     // Handle Costume delete from on DELETE. 
-exports.fig_delete = function(req, res) {
-    res.send('NOT IMPLEMENTED: fig delete DELETE ' + req.params.id); 
+exports.fig_delete = async function(req, res) {
+    console.log("Delete " + req.params.id)
+    try {
+        let result = await Fig.findByIdAndDelete(req.params.id)
+        console.log("Removed " + result)
+        res.send(result)
+    } catch(err) {
+        res.status(500)
+        res.send(`{"error": Error deleting ${err}}`);
+    }
 };
 
     // Handle Costume update form on PUT. 

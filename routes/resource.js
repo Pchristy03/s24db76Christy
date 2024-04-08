@@ -25,4 +25,7 @@ router.get('/fig/:id', fig_controller.fig_detail);
 // GET request for list of all Costume items.
 router.get('/figs', fig_controller.fig_list);
 
+// route to view fig details
+router.get("/detail", fig_controller.fig_view_one_page);
+
 module.exports = router;

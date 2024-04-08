@@ -6,3 +6,8 @@ body {
 a {
   color: #00B7FF;
 }
+
+.figAttribute {
+  background-color: lightgrey;
+  width: 180px;
+}
