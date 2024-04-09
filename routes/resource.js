@@ -28,4 +28,7 @@ router.get('/figs', fig_controller.fig_list);
 // route to view fig details
 router.get("/detail", fig_controller.fig_view_one_page);
 
+// route for creating a fig
+router.get('/create', fig_controller.fig_create_page);
+
 module.exports = router;

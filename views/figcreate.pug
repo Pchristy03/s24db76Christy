@@ -1,0 +1,37 @@
+extends layout
+
+block content
+    h1= title
+
+    form(id="FigForm", action="/resource/fig", method="POST")
+        div.form-group
+            label.figAttribute(for="fig_name") Fig Name
+            input#fig_name(type="text", name="fig_name")
+        div.form-group
+            label.figAttribute(for="fig_size") Fig Size
+            input#fig_size(type="text", name="fig_size")
+        div.form-group
+            label.figAttribute(for="fig_age") Fig Age
+            input#fig_age(type="text", name="fig_age")
+        div.form-group
+            label.figAttribute(for="fig_poisonous") Fig Poison Value
+            input#fig_poisonous(type="text", name="fig_poisonous")
+        input(type="submit")
+
+    script.
+        document.forms['FigForm'].addEventListener('submit', (event) => {
+            event.preventDefault();
+            // TODO do something here to show user that form is being submitted 
+            fetch(event.target.action, {
+                method: 'POST',
+                body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+            }).then((resp) => {
+                return resp.json(); // or resp.text() or whatever the server sends 
+            }).then((body) => {
+                alert("Save succeded")
+                // TODO handle body 
+            }).catch((error) => {
+                // TODO handle error
+                alert("Save failed " + error ) 
+            });
+        });
