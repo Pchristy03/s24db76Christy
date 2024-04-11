@@ -31,4 +31,8 @@ router.get("/detail", fig_controller.fig_view_one_page);
 // route for creating a fig
 router.get('/create', fig_controller.fig_create_page);
 
+router.get('/update', fig_controller.fig_update_page);
+
+router.get('/delete', fig_controller.fig_delete_page);
+
 module.exports = router;

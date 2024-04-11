@@ -46,6 +46,19 @@ exports.fig_create_page = function (req, res) {
     }
 };
 
+exports.fig_update_page = async function(req, res) {
+    console.log("update view for item " + req.query.id)
+
+    try {
+        let result = await Fig.findById(req.query.id)
+        console.log(result);
+        res.render('figupdate', {title: 'Fig Update', toShow: result });
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": "${err}"}`)
+    }
+};
+
 // for a specific Costume. 
 exports.fig_detail = async function (req, res) {
     console.log("detail " + req.params.id)
@@ -54,7 +67,7 @@ exports.fig_detail = async function (req, res) {
         res.send(result)
     } catch (error) {
         res.status(500)
-        res.send(`{"error": document for id ${req.params.id} not found`);
+        res.send(`{"error": "document for id ${req.params.id} not found"}`);
     }
 
 };
