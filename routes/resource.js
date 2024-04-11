@@ -8,31 +8,21 @@ var fig_controller = require('../controllers/fig');
 // GET resources base.
 router.get('/', api_controller.api);
 
-/// COSTUME ROUTES ///
+/// FIG ROUTES ///
 
-// POST request for creating a Costume.
+// POST request for creating a fig.
 router.post('/fig', fig_controller.fig_create_post);
 
-// DELETE request to delete Costume.
+// DELETE request to delete fig.
 router.delete('/fig/:id', fig_controller.fig_delete);
 
-// PUT request to update Costume.
+// PUT request to update fig.
 router.put('/fig/:id', fig_controller.fig_update_put);
 
-// GET request for one Costume.
+// GET request for one fig.
 router.get('/fig/:id', fig_controller.fig_detail);
 
-// GET request for list of all Costume items.
+// GET request for list of all fig items.
 router.get('/figs', fig_controller.fig_list);
-
-// route to view fig details
-router.get("/detail", fig_controller.fig_view_one_page);
-
-// route for creating a fig
-router.get('/create', fig_controller.fig_create_page);
-
-router.get('/update', fig_controller.fig_update_page);
-
-router.get('/delete', fig_controller.fig_delete_page);
 
 module.exports = router;
