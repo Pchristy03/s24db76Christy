@@ -1,0 +1,48 @@
+extends layout
+block content 
+    h1= title
+    if (toShow == null)
+        h2 No instance to delete
+    else
+    - let figId = toShow._id
+    - let figName = toShow.name
+    - let figSize = toShow.size
+    - let figAge = toShow.age
+    - let isPoisonous = toShow.is_poisonous
+    - let actionid = "/resource/fig/" + figId
+
+    script let actionid = "#{actionid}"
+    div
+        div.row
+            div(class='costumeAttr mr-md-3') Fig ID is: #{figId}
+        div.row
+            div(class='costumeAttr mr-md-3') Fig name is: #{figName}
+        div.row
+            div(class='costumeAttr mr-md-3') Fig size is: #{figSize}
+        div.row
+            div(class='costumeAttr mr-md-3') Fig age is: #{figAge}
+        div.row
+            div(class='costumeAttr mr-md-3') Is the Fig Poisonous?: #{isPoisonous}
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+
+    script.
+        function cancel() {
+            // Go back to the home page for the costume collection
+            window.location.href='/fig'
+        }
+    script.
+        function deleteOnid() {
+            console.log("starting delete") // delete first
+            fetch(actionid, {
+                method: 'DELETE' // Don't need a body for the delete
+            }).then((resp) => {
+                return resp.json(); // or resp.text() or whatever the server sends 
+            }).then((body) => {
+                alert("Delete succeeded") 
+                window.location.href='/fig' // TODO handle body
+            }).catch((error) => {
+                // TODO handle error 
+                alert("Delete failed " + error )
+            }); 
+        }

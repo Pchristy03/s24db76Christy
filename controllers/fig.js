@@ -59,6 +59,18 @@ exports.fig_update_page = async function(req, res) {
     }
 };
 
+exports.fig_delete_page = async function(req, res) {
+    console.log("Delete view for id " + req.query.id)
+
+    try {
+        let result = await Fig.findById(req.query.id)
+        res.render("figdelete", {title: "Fig Delete", toShow: result });
+    } catch(err) {
+        res.status(500)
+        res.send( `{"error": "${err}"}`);
+    }
+}
+
 // for a specific Costume. 
 exports.fig_detail = async function (req, res) {
     console.log("detail " + req.params.id)
