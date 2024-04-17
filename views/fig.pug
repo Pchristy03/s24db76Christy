@@ -1,6 +1,7 @@
 extends layout
 
 block content
+  button.btn(class="btn-secondary", onclick= `dispatch(\"fig/create\")`) Create A Fig
   h1= title
   //- [{'name': 'Brown Turkey', 'size': 'medium', 'age': '5', 'is_poisonous': true}, {'name': 'Black Mission', 'size': 'small', 'age': '2', 'is_poisonous': true},{'name': 'Celeste', 'size': 'large', 'age': '7', 'is_poisonous': false}]
 
@@ -10,12 +11,14 @@ block content
     div(class="row")
       - for(var i=0; i<items.length; i++)
         - let destination = `dispatch(\"/fig/update?id=${items[i]['_id']}\")`
+        - let detailview = `dispatch(\"/fig/detail?id=${items[i]['_id']}\")`
         div(class="col-sm-2")
           p Name: #{items[i]['name']} 
           p Size: #{items[i]['size']}
           p Age: #{items[i]['age']}
           p Poisonous: #{items[i]['is_poisonous']}
           button.btn(class="btn-primary", onclick= destination) Update
+          button.btn(class="btn-primary", onclick= detailview) Details
 
   script.
     function dispatch(path) {
