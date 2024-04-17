@@ -1,17 +1,26 @@
 extends layout
 
 block content
-  h1= title
-  p I am making changes to the Paragraph sections!
-  button(type="button", class="btn btn-secondary",  onclick="double()") I am a button
-  div(id="double") Two to the power value is value
-  script.
-    var value = 0;
-    var power = 1;
-    function double () {
-        value = value + 1
-        power = power * 2
-        document.getElementById('double').innerHTML = `Two to the power ${value} is ${power}`
-    }
-  a(href="http://127.0.0.1:3000/fig") Fig Search
+  //- h1= title
+  //- p I am making changes to the Paragraph sections!
+  //- button(type="button", class="btn btn-secondary",  onclick="double()") I am a button
+  //- div(id="double") Two to the power value is value
+  //- script.
+  //-   var value = 0;
+  //-   var power = 1;
+  //-   function double () {
+  //-       value = value + 1
+  //-       power = power * 2
+  //-       document.getElementById('double').innerHTML = `Two to the power ${value} is ${power}`
+  //-   }
+  //- a(href="http://127.0.0.1:3000/fig") Fig Search
+  if (!user)
+    a(href="/login") Login
+    br
+    a(href="/register") Register
+  if (user)
+    p You are currently logged in as #{user.username} 
+    a(href="/fig") Take me to figs
+    br
+    a(href="/logout") Logout
 

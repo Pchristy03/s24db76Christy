@@ -1,6 +1,6 @@
 var Fig = require("../models/fig");
 
-// List all costumes
+// List all figs
 exports.fig_list = async function (req, res) {
     try {
         theFigs = await Fig.find()
@@ -33,7 +33,7 @@ exports.fig_view_one_page = async function (req, res) {
     }
 };
 
-// Handle building the view for creating a costume. // No body, no in path parameter, no query.
+// Handle building the view for creating a fig. // No body, no in path parameter, no query.
 // Does not need to be async 
 exports.fig_create_page = function (req, res) {
     console.log("create view")
@@ -71,7 +71,7 @@ exports.fig_delete_page = async function(req, res) {
     }
 }
 
-// for a specific Costume. 
+// for a specific Fig. 
 exports.fig_detail = async function (req, res) {
     console.log("detail " + req.params.id)
     try {
@@ -84,7 +84,7 @@ exports.fig_detail = async function (req, res) {
 
 };
 
-// Handle Costume create on POST. 
+// Handle fig create on POST. 
 exports.fig_create_post = async function (req, res) {
     console.log(req.body)
     let document = new Fig();
@@ -102,7 +102,7 @@ exports.fig_create_post = async function (req, res) {
     }
 };
 
-// Handle Costume delete from on DELETE. 
+// Handle fig delete from on DELETE. 
 exports.fig_delete = async function (req, res) {
     console.log("Delete " + req.params.id)
     try {
@@ -115,7 +115,7 @@ exports.fig_delete = async function (req, res) {
     }
 };
 
-// Handle Costume update form on PUT. 
+// Handle fig update form on PUT. 
 exports.fig_update_put = async function (req, res) {
     console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`)
 
